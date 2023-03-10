@@ -18,6 +18,7 @@
 
         while($ln = mysqli_fetch_array($result)){
        $usuario = $ln['usuario'];
+       $nivel = $ln['usuarios'];
 }
 
         // print_r($sql);
@@ -34,7 +35,15 @@
         {
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
-            header('Location: sistema.php');
+
+            if($nivel == 1) {
+                // 1 é igual a admin.
+                header('Location: sistema.php');
+            }else {
+                //Redireciona para qualquer outro lugar;
+                header('Location: edit.php');
+            }
+            
         }
     }
     else

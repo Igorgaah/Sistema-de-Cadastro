@@ -36,10 +36,16 @@
 <body>
     <div class="box">
     <img src="img/Logo-1.png" alt="Logo prefeitura">
-    <br><br>
+    <br><br><br>
         <a href="login.php">Login</a>
         <div class="gender-title">
-            <h6>Ainda não tem uma conta? <a href="formulario.php">Crie uma</a></h6>
+            <br>
+            <h6>Ainda não tem uma conta?
+                <br><br><br>
+                 <a href="formulario.php">Crie uma</a></h6>
+            <h6>Esqueci minha senha? 
+                <br><br><br>
+                <a href="#">Clique aqui</a><h6>
         </div>
     </div>
 </body>
