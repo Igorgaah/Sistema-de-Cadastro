@@ -120,7 +120,7 @@
     </style>
 </head>
 <body>
-    <a href="sistema.php">Voltar</a>
+    <!--<a href="sistema.php">Voltar</a>-->
     <div class="box">
         <form action="saveEdit.php" method="POST">
                 <legend><b>Editar Candidato</b></legend>

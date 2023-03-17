@@ -8,7 +8,7 @@
         unset($_SESSION['senha']);
         header('Location: login.php');
     }
-    $logado = $_SESSION['email'];
+    $logado = $_SESSION['usuario'];
     if(!empty($_GET['search']))
     {
         $data = $_GET['search'];
@@ -28,6 +28,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>SISTEMA | PMI</title>
+
+    <!--Importando JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <style>
         body{
             background: #A3A3A3 none no-repeat scroll 0px 0px;
@@ -72,7 +75,7 @@
         </button>
     </div>
     <div class="m-5">
-        <table class="table text-white table-bg">
+        <table id="listaUsuarios" class="table text-white table-bg">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -98,9 +101,9 @@
                         echo "<td>".$user_data['email']."</td>";
                         echo "<td>".$user_data['telefone']."</td>";
                         echo "<td>".$user_data['sexo']."</td>";
-                        echo "<td>".$user_data['data_nasc']."</td>";
+                        echo "<td>".date("d/m/Y", strtotime($user_data['data_nasc']))."</td>";
                         echo "<td>".$user_data['curso']."</td>";
-                        echo "<td>".$user_data['data_con']."</td>";
+                        echo "<td>".date("d/m/Y", strtotime($user_data['data_con']))."</td>";
                         echo "<td>".$user_data['curriculo']."</td>";
                         echo "<td>
                             <a class='btn btn-sm btn-danger' href='delete.php?id=$user_data[id]' title='Deletar'>
@@ -117,18 +120,30 @@
     </div>
 </body>
 <script>
-    var search = document.getElementById('pesquisar');
-
+    /*var search = document.getElementById('pesquisar');
     search.addEventListener("keydown", function(event) {
         if (event.key === "Enter") 
         {
             searchData();
         }
     });
-
     function searchData()
     {
         window.location = 'sistema.php?search='+search.value;
-    }
+    }*/
+
+    $(document).ready(function() {
+        $('#pesquisar').keyup(function(event) {
+            var pesquisa = $('#pesquisar').val().toUpperCase();
+
+            $('tbody tr').each(function() {
+                if($(this).html().toUpperCase().indexOf(pesquisa) === -1) {
+                    $(this).hide();
+                }else {
+                    $(this).show();
+                }
+            });
+        });
+    });
 </script>
 </html>

@@ -4,3 +4,5 @@
     unset($_SESSION['senha']);
     header("Location: login.php");
 ?>
+    session_destroy();
+?>

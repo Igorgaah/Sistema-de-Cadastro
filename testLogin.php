@@ -17,8 +17,9 @@
         $result = $conexao->query($sql);
 
         while($ln = mysqli_fetch_array($result)){
-       $usuario = $ln['usuario'];
-       $nivel = $ln['usuarios'];
+            $id = $ln['id'];
+            $usuario = $ln['nome'];
+            $nivel = $ln['admnistrador'];
 }
 
         // print_r($sql);
@@ -33,6 +34,7 @@
         }
         else
         {
+            $_SESSION['usuario'] = $usuario;
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
 
@@ -40,8 +42,9 @@
                 // 1 é igual a admin.
                 header('Location: sistema.php');
             }else {
-                //Redireciona para qualquer outro lugar;
+                //Redireciona para edit
                 header('Location: edit.php');
+                header('Location: edit.php?id='.$id);
             }
             
         }
