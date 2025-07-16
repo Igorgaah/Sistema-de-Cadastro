@@ -82,8 +82,4 @@ Este projeto tem fins didáticos, podendo ser usado como base para sistemas mais
 Este projeto é de uso livre para fins acadêmicos e de aprendizado.
 
 ```
-
----
-
-
 ```
